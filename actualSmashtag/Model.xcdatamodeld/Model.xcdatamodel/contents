@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Mention" representedClassName=".Mention" syncable="YES" codeGenerationType="category">
+        <attribute name="count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="search" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Search" inverseName="mentions" inverseEntity="Search" syncable="YES"/>
+        <relationship name="tweetsWithMention" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tweet" inverseName="mention" inverseEntity="Tweet" syncable="YES"/>
+    </entity>
+    <entity name="Search" representedClassName=".Search" syncable="YES" codeGenerationType="category">
+        <attribute name="searchName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mentions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mention" inverseName="search" inverseEntity="Mention" syncable="YES"/>
+        <relationship name="tweetsInSearch" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tweet" inverseName="nameOfSearch" inverseEntity="Tweet" syncable="YES"/>
+    </entity>
+    <entity name="Tweet" representedClassName=".Tweet" syncable="YES" codeGenerationType="category">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mention" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mention" inverseName="tweetsWithMention" inverseEntity="Mention" syncable="YES"/>
+        <relationship name="nameOfSearch" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Search" inverseName="tweetsInSearch" inverseEntity="Search" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Tweet" positionX="-5184" positionY="-19" width="128" height="88"/>
+        <element name="Mention" positionX="-4871" positionY="-49" width="128" height="103"/>
+        <element name="Search" positionX="-5139" positionY="-216" width="128" height="88"/>
+    </elements>
+</model>
